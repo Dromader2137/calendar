@@ -16,9 +16,9 @@ export function CalendarGrid() {
 	const startOfCurrentMonth = useCalendarStore((s) => s.currentMonthStart)
 	const startingDayOfWeek = (startOfCurrentMonth.getDay() + 6) % 7
 	const numberOfDays = daysInMonth(startOfCurrentMonth)
-	const numberOfWeeks = Math.ceil((startingDayOfWeek + numberOfDays) / 7) 
+	const numberOfWeeks = Math.ceil((startingDayOfWeek + numberOfDays) / 7)
 	return (
-		<div className="flex-1 grid grid-cols-7 border border-black w-full h-full">
+		<div className="flex-1 grid grid-cols-7 border border-(--border)">
 			{Array.from({ length: numberOfWeeks * 7 }).map((_, i) => (
 				<CalendarCell cellId={i} key={i} />
 			))}

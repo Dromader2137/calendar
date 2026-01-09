@@ -6,6 +6,8 @@ interface CalendarStore {
 	setMonth: (date: Date) => void
 	setNextMonth: () => void
 	setPrevMonth: () => void
+	currentlySelectedDate: Date | null
+	select: (date: Date) => void
 }
 
 function startOfMonth(): Date {
@@ -29,9 +31,14 @@ export const useCalendarStore = create<CalendarStore>((set, get) =>
 (
 	{
 		currentMonthStart: startOfMonth(),
+		currentlySelectedDate: null,
 		currentMonthEnd: () => endOfMonth(get().currentMonthStart),
 		setMonth: (date: Date) => set({ currentMonthStart: date }),
-		setNextMonth: () => set({currentMonthStart: nextMonth(get().currentMonthStart)}),
-		setPrevMonth: () => set({currentMonthStart: prevMonth(get().currentMonthStart)}),
+		setNextMonth: () => set({ currentMonthStart: nextMonth(get().currentMonthStart) }),
+		setPrevMonth: () => set({ currentMonthStart: prevMonth(get().currentMonthStart) }),
+		select: (date: Date) => {
+			set({ currentlySelectedDate: date })
+			console.debug(date.toString())
+		}
 	})
 )

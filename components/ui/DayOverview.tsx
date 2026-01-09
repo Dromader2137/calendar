@@ -1,5 +1,20 @@
-export async function DayOverview() {
+'use client'
+
+import { useCalendarStore } from "@/store/CalendarStore";
+import { MonthName } from "@/utils/date";
+
+export function DayOverview() {
+	const calendarStore = useCalendarStore()
+	const date = calendarStore.currentlySelectedDate
+	let dateString = "NOTHING SELECTED"
+	if (date != undefined) {
+		dateString = date?.getDate().toString() + " " + MonthName(date?.getMonth()) + " " + date?.getFullYear()
+	}
 	return (
-		<div className="h-[50vh] lg:h-full w-full lg:w-[40vw] bg-blue-500" />
+		<div className="flex flex-col h-[40vh] md:h-full w-full md:w-[40vw] bg-(--bg-bright)">
+			<div className="flex justify-center items-center h-16 bg-(--bg) font-bold">
+				{dateString}
+			</div>
+		</div>
 	);
 }

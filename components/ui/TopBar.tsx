@@ -1,18 +1,17 @@
+
 'use client'
 
-import { useCalendarStore } from "@/store/CalendarStore";
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
+import { useTheme } from 'next-themes';
 
 export default function TopBar() {
-	const calendarStore = useCalendarStore()
+	const { theme, setTheme } = useTheme()
+
 	return (
-		<div className="w-full, h-32 bg-red-500">
-			{
-				calendarStore.currentMonthStart.getFullYear().toString()
-				+ " "
-				+ calendarStore.currentMonthStart.getMonth().toString()
-			}
-			<button onClick={calendarStore.setPrevMonth} > Prev </button>
-			<button onClick={calendarStore.setNextMonth} > Next </button>
+		<div className="flex flex-row items-center w-full h-16 bg-(--bg-muted)">
+			<button onClick={() => theme == "dark" ? setTheme("light") : setTheme("dark")}>
+				<DarkModeOutlinedIcon className='ml-5' />
+			</button>
 		</div>
 	);
 }

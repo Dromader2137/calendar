@@ -15,17 +15,27 @@ type CalendarCellProps = {
 };
 
 export const CalendarCell: React.FC<CalendarCellProps> = ({ cellId }) => {
-	const startOfCurrentMonth = useCalendarStore((s) => s.currentMonthStart)
+	const calendarStore = useCalendarStore()
+	const startOfCurrentMonth = calendarStore.currentMonthStart
 	const startingDayOfWeek = (startOfCurrentMonth.getDay() + 6) % 7
+	const dayOfMonth = cellId - startingDayOfWeek + 1
 	const numberOfDays = daysInMonth(startOfCurrentMonth)
+	const isInActiveMonth = dayOfMonth > 0 && dayOfMonth <= numberOfDays
+	const dayOfWeek = (dayOfMonth + startingDayOfWeek + 6) % 7
+	const isWeekend = dayOfWeek >= 5
+	const date = new Date(startOfCurrentMonth.getFullYear(), startOfCurrentMonth.getMonth(), dayOfMonth)
 	return (
-		<div className="border border-black flex-1 items-center justify-center bg-amber-500 ">
+		<button
+			onClick={() => calendarStore.select(date)}
+			className={
+				`border border-(--border) flex-1 flex items-center justify-center 
+				${isInActiveMonth ? "bg-(--bg-muted) font-bold" : "bg-(--bg-bright)"}
+				${isWeekend ? isInActiveMonth ? "text-(--primary-bright)" : "text-(--primary)"
+					: isInActiveMonth ? "" : "text-(--text-muted)"}`
+			}>
 			{
-				cellId - startingDayOfWeek + 1 > 0
-					&& cellId - startingDayOfWeek + 1 <= numberOfDays
-					? cellId - startingDayOfWeek + 1
-					: 0
+				date.getDate()
 			}
-		</div>
+		</button>
 	)
 }
