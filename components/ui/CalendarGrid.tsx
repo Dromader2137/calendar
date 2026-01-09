@@ -2,6 +2,7 @@
 
 import "@/store/CalendarStore"
 import { useCalendarStore } from "@/store/CalendarStore";
+import { CalendarCell } from "./CalendarCell";
 
 function daysInMonth(date: Date): number {
 	return new Date(
@@ -19,17 +20,7 @@ export function CalendarGrid() {
 	return (
 		<div className="flex-1 grid grid-cols-7 border border-black w-full h-full">
 			{Array.from({ length: numberOfWeeks * 7 }).map((_, i) => (
-				<div
-					key={i}
-					className="border border-black flex items-center justify-center"
-				>
-					{
-						i - startingDayOfWeek + 1 > 0 
-							&& i - startingDayOfWeek + 1 <= numberOfDays 
-							? i - startingDayOfWeek + 1 
-							: 0
-					}
-				</div>
+				<CalendarCell cellId={i} key={i} />
 			))}
 		</div>
 	);
