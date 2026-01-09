@@ -1,4 +1,3 @@
-
 'use client'
 
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
@@ -10,7 +9,7 @@ export default function TopBar() {
 	return (
 		<div className="flex flex-row items-center w-full h-16 bg-(--bg-muted)">
 			<button onClick={() => theme == "dark" ? setTheme("light") : setTheme("dark")}>
-				<DarkModeOutlinedIcon className='ml-5' />
+				<DarkModeOutlinedIcon className='ml-4' />
 			</button>
 		</div>
 	);

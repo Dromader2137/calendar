@@ -28,8 +28,9 @@ export const CalendarCell: React.FC<CalendarCellProps> = ({ cellId }) => {
 		<button
 			onClick={() => calendarStore.select(date)}
 			className={
-				`border border-(--border) flex-1 flex items-center justify-center 
-				${isInActiveMonth ? "bg-(--bg-muted) font-bold" : "bg-(--bg-bright)"}
+				`flex-1 flex items-center justify-center hover:bg-(--bg-bright) active:bg-(--bg-very-bright)
+					rounded-[1em] m-[0.08rem]
+				${isInActiveMonth ? "bg-(--bg-muted) font-bold" : "bg-(--bg)"}
 				${isWeekend ? isInActiveMonth ? "text-(--primary-bright)" : "text-(--primary)"
 					: isInActiveMonth ? "" : "text-(--text-muted)"}`
 			}>

@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 [data-theme='light'] {
-	--bg: #f2e5bc;
+	--bg: #ebdbb2;
 	--bg-bright: #fbf1c7;
-	--bg-muted: #ebdbb2;
+	--bg-very-bright: #f9f5d7;
+	--bg-muted: #d5c4a1;
 
 	--text: #3c3836;
 	--text-muted: #665c54;
@@ -28,6 +29,7 @@
 [data-theme='dark'] {
 	--bg: #282828;
 	--bg-bright: #32302f;
+	--bg-very-bright: #504945;
 	--bg-muted: #1d2021;
 
 	--text: #ebdbb2;
