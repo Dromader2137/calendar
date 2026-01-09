@@ -29,7 +29,7 @@ export const CalendarCell: React.FC<CalendarCellProps> = ({ cellId }) => {
 			onClick={() => calendarStore.select(date)}
 			className={
 				`flex-1 flex items-center justify-center hover:bg-(--bg-bright) active:bg-(--bg-very-bright)
-					rounded-[1em] m-[0.08rem]
+					rounded-2xl m-[0.08rem]
 				${isInActiveMonth ? "bg-(--bg-muted) font-bold" : "bg-(--bg)"}
 				${isWeekend ? isInActiveMonth ? "text-(--primary-bright)" : "text-(--primary)"
 					: isInActiveMonth ? "" : "text-(--text-muted)"}`
